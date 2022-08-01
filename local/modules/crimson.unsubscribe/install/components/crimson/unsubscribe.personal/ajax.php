@@ -43,9 +43,9 @@ class CrimsonUnsubscribeAjax extends \Bitrix\Main\Engine\Controller {
                 // Управление чёрным списком в модуле sender
                 $service = new \SevenDeadFlies\Utils\SubscribeService();
                 if ($updateTypes['TYPE_SENDER']) {
-                    $service->subscribe($userInfo['email']);
-                } else {
                     $service->unsubscribe($userInfo['email']);
+                } else {
+                    $service->subscribe($userInfo['email']);
                 }
 
                 // Обновляем настройки пользователя

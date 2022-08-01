@@ -144,9 +144,23 @@ class CrimsonUnsubscribeHelper {
     public function checkUserAllEvents($email) {
         $ret = [];
         $ret[] = print_r($this->getUserInfo(0, $email), true);
+        $service = new \SevenDeadFlies\Utils\SubscribeService();
+
+        
+        $ret[] = "Inner/OnBeforeEventAdd/OnBeforeEventSend - CODE - Название";
+        $controller = new \SevenDeadFlies\Utils\SubscribeController();
         foreach ($this->getEmailTypesList() as $type => $typeTitle) {
-            $ret[] = ($this->isSubscribed($email, $type) ? "Y" : "N")." - $type / $typeTitle" ;
+            $checkInner = ($this->isSubscribed($email, $type) ? "Y" : "N");
+            $params = ['EMAIL' => $email];
+            $paramsEx = ['EVENT_NAME' => $type];
+            $null = false;
+            $checkBeforeEventAdd = ($controller->OnBeforeEventAdd($type, $null, $params, $null, $null, $null) ? "Y" : "N");
+            $checkBeforeEventSend = ($controller->OnBeforeEventSend($params, $paramsEx) ? "Y" : "N");
+            $checkInner = ($this->isSubscribed($email, $type) ? "Y" : "N");
+
+            $ret[] = "$checkInner/$checkBeforeEventAdd/$checkBeforeEventSend - $type / $typeTitle";
         }
+        $ret[] = print_r($service->getContactData($email), true);
         return $ret;
     }
 
