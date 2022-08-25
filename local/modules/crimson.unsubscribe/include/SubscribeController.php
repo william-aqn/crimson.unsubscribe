@@ -15,6 +15,8 @@ class SubscribeController {
      * @return boolean
      */
     function OnBeforeEventAdd(&$event, &$lid, &$arFields, &$messageId, &$files, &$languageId) {
+        if (defined("ONLY_EMAIL")) {return true;}
+        
         $helper = new \CrimsonUnsubscribeHelper();
         if ($helper->isSubscribed($arFields["EMAIL_TO"] ?? $arFields["EMAIL"], $event) !== false) {
             return true;
@@ -28,6 +30,8 @@ class SubscribeController {
      * @return boolean
      */
     function OnBeforeEventSend(&$arFields, $arTemplate) {
+        if (defined("ONLY_EMAIL")) {return true;}
+
         $helper = new \CrimsonUnsubscribeHelper();
         if ($unsubscribeLink = $helper->isSubscribed($arFields["EMAIL_TO"] ?? $arFields["EMAIL"], $arTemplate["EVENT_NAME"])) {
             $arFields["UNSUBSCRIBE_LINK"] = $unsubscribeLink;

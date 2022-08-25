@@ -100,7 +100,7 @@ class CrimsonUnsubscribeHelper {
      * @return array
      */
     public function getUnsubscribeTypes() {
-        $types = ['TYPE_SYSTEM', 'TYPE_PERSONAL', 'TYPE_SENDER'];
+        $types = ['TYPE_SYSTEM', 'TYPE_PERSONAL', 'TYPE_SENDER', 'TYPE_PARTNERS'];
         $ret = [];
         foreach ($types as $type) {
             $ret[$type] = $this->getConfig($type);

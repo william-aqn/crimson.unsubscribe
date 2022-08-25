@@ -73,6 +73,15 @@ class CrimsonUnsubscribeOptions {
                         ],
                     ],
                     [
+                        'TYPE_PARTNERS',
+                        'Выбрать партнёрские уведомления',
+                        '',
+                        [
+                            'multiselectbox',
+                            $listEmailTypeEvents
+                        ],
+                    ],
+                    [
                         'TYPE_SENDER',
                         'Добавлять в ЧС модуля sender при отписке пользователя массовых рассылок',
                         'Y',

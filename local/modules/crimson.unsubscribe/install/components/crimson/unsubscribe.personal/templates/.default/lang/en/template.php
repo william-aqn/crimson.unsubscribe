@@ -7,3 +7,5 @@ $MESS['TYPE_PERSONAL']="Personal discounts";
 $MESS['TYPE_PERSONAL_DESCR']=" distribution of promotional codes to those who have not bought for a long time";
 $MESS['TYPE_SENDER']="News/promo newsletter";
 $MESS['TYPE_SENDER_DESCR']="what we send for all users ";
+$MESS['TYPE_PARTNERS'] = "Affiliate program";
+$MESS['TYPE_PARTNERS_DESCR'] = "notifications related to events in the affiliate account";
